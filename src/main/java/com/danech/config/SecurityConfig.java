@@ -34,8 +34,8 @@ import com.danech.filter.SecurityFilter;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@Autowired
-	private UserDetailsService userDetailsService;
+	//@Autowired
+	//private UserDetailsService userDetailsService;
 
 	@Autowired
 	private BCryptPasswordEncoder encoder;
@@ -56,12 +56,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	
 	// Authenticate
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-		.userDetailsService(userDetailsService)
-		.passwordEncoder(encoder);
-	}
+	//@Override
+	//protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	//	auth
+	//	.userDetailsService(userDetailsService)
+	//	.passwordEncoder(encoder);
+	//}
 	
 	//Authorization
 	@Override
