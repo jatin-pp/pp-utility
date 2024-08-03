@@ -25,9 +25,9 @@ public class SecurityFilter extends OncePerRequestFilter {
 	@Autowired
 	private JwtUtil jwtUtil;
 
-	@Autowired
-	private UserDetailsService userDetailsService;
-	
+//	@Autowired
+//	private UserDetailsService userDetailsService;
+//	
 	@Override
 	protected void doFilterInternal(
 			HttpServletRequest request, 
@@ -45,20 +45,20 @@ public class SecurityFilter extends OncePerRequestFilter {
 					&& SecurityContextHolder
 					.getContext().getAuthentication()==null) {
 				
-				UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
+				//UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
 				
 				// validate token
-				boolean isValid = jwtUtil.validateToken(token, userDetails.getUsername());
-				if(isValid) {
-					UsernamePasswordAuthenticationToken upAuthToken = 
-							new UsernamePasswordAuthenticationToken(
-									userDetails.getUsername(), 
-									userDetails.getPassword(),
-									userDetails.getAuthorities());
-					upAuthToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+//				boolean isValid = jwtUtil.validateToken(token, userDetails.getUsername());
+//				if(isValid) {
+//					UsernamePasswordAuthenticationToken upAuthToken = 
+//							new UsernamePasswordAuthenticationToken(
+//									userDetails.getUsername(), 
+//									userDetails.getPassword(),
+//									userDetails.getAuthorities());
+//					upAuthToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 					// final object storing in Security context authentication details
-					SecurityContextHolder.getContext().setAuthentication(upAuthToken);
-				}
+					//SecurityContextHolder.getContext().setAuthentication(upAuthToken);
+				//}
 			}
 		}
 		//  It will go without security context object if token==null or invlid token
